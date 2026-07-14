@@ -1,9 +1,13 @@
 <?php
+//  Windows: D:/xampp/php/php.exe -f D:/xampp/htdocs/app-farm/sorte-dia/API/gera_api.php
 set_time_limit(360);
 setlocale(LC_ALL, 'pt_BR.utf-8', 'pt_BR', 'pt_BR.utf-8', 'portuguese');
 
 // CONFIG
-define('GEMINI_API_KEY', (getenv('GEMINI_API_KEY') ?? '')); 
+$getKey = strval(getenv('GEMINI_API_KEY'));
+$thisKey = (strlen($getKey) ? $getKey : '');
+
+define('GEMINI_API_KEY', $thisKey); 
 define('GEMINI_MODEL', 'gemini-3.1-flash-lite');
 define('CACHE_DIR', __DIR__ . '/cache');
 
@@ -20,6 +24,11 @@ $idiomasSuportados = array(
  'en-US' => array('wiki' => 'en', 'nome' => 'English (United States)', 'titulo' => 'Your day with AI', 'cultura' => 'Use imagery familiar to US/western pop-astrology culture (four-leaf clovers, newspaper horoscopes, tarot vibes).'),
  'es-ES' => array('wiki' => 'es', 'nome' => 'espanol de Espana', 'titulo' => 'Tu día con IA', 'cultura' => 'Usa un tono cercano a la cultura hispana de la buena suerte (amuletos, tarot, tradición popular, sin ofender a nadie).')
 );
+
+if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $data)) {
+ echo 'Data inválida. Use o formato AAAA-MM-DD';
+ exit;
+}
 
 if (!isset($idiomasSuportados[$idioma])) $idioma = 'pt-BR';
 $infoIdioma = $idiomasSuportados[$idioma];
@@ -254,8 +263,8 @@ function pacoteFallback() {
 
 // Roda de fato
 if (!empty($idioma) && in_array($idioma, $lingua)) {
- foreach ($signos as $sig) {
-  echo "Gerando {$sig}...\n";
+ foreach ($signos as $p => $sig) {
+  echo ($p + 1) . ") Gerando {$sig}...\n";
 
   $cacheFile = "{$cacheDir}/{$sig}-{$idioma}.json";
   if (!file_exists($cacheFile)) {
@@ -270,8 +279,8 @@ if (!empty($idioma) && in_array($idioma, $lingua)) {
    echo "Ok Cache\n";
   }
 
-  //sleep(10);
   echo "------\n";
+  sleep(10);
  }
 
  echo "Finalizado";
