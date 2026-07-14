@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Sorte do Dia com IA</title>
+ <meta name="description" content="Descubra sua mensagem diária personalizada com Inteligência Artificial. Amor, dinheiro, trabalho, saúde e muito mais.">
+ <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+ <style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+
+body{
+font-family:Poppins,sans-serif;
+background:#031b08;
+color:#fff;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(0,255,120,.15),transparent 35%),
+radial-gradient(circle at 80% 10%,rgba(80,255,180,.10),transparent 30%),
+radial-gradient(circle at 70% 80%,rgba(50,255,120,.12),transparent 40%);
+z-index:-2;
+}
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(#55ff88 1px,transparent 1px);
+background-size:60px 60px;
+opacity:.08;
+z-index:-1;
+}
+
+header{
+
+padding:25px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+
+font-size:34px;
+font-weight:800;
+color:#7cff61;
+}
+
+.logo span{
+color:white;
+}
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-left:30px;
+transition:.3s;
+}
+
+nav a:hover{
+color:#8eff68;
+}
+
+.hero{
+
+padding:70px 8%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.tag{
+
+display:inline-block;
+padding:10px 18px;
+border-radius:30px;
+background:#0f3516;
+color:#87ff74;
+margin-bottom:20px;
+font-size:14px;
+}
+
+h1{
+
+font-size:64px;
+line-height:1.1;
+margin-bottom:25px;
+}
+
+h1 span{
+color:#77ff55;
+}
+
+p{
+
+font-size:20px;
+line-height:1.8;
+opacity:.85;
+}
+
+.buttons{
+
+margin-top:40px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+
+padding:18px 35px;
+border-radius:40px;
+font-weight:bold;
+text-decoration:none;
+transition:.3s;
+}
+
+.primary{
+
+background:#67ff45;
+color:#042008;
+}
+
+.primary:hover{
+
+transform:translateY(-3px);
+box-shadow:0 10px 30px rgba(103,255,69,.35);
+}
+
+.secondary{
+
+border:2px solid #67ff45;
+color:#67ff45;
+}
+
+.phone{
+
+background:linear-gradient(180deg,#10361b,#051109);
+border:1px solid rgba(255,255,255,.08);
+border-radius:40px;
+padding:30px;
+max-width:350px;
+margin:auto;
+box-shadow:0 0 60px rgba(0,255,100,.25);
+}
+
+.screen{
+
+background:#08230e;
+border-radius:25px;
+padding:25px;
+}
+
+.signo{
+
+font-size:28px;
+font-weight:bold;
+color:#76ff5b;
+margin-bottom:15px;
+}
+
+.card{
+
+background:#12351a;
+padding:18px;
+border-radius:18px;
+margin:15px 0;
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-top:20px;
+}
+
+.item{
+
+background:#183f22;
+padding:15px;
+border-radius:15px;
+text-align:center;
+font-size:14px;
+}
+
+section{
+
+padding:100px 8%;
+}
+
+h2{
+
+text-align:center;
+font-size:42px;
+margin-bottom:60px;
+}
+
+.features{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+}
+
+.feature{
+
+background:#0d2913;
+padding:35px;
+border-radius:25px;
+transition:.3s;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.feature:hover{
+
+transform:translateY(-8px);
+background:#14381c;
+}
+
+.icon{
+
+font-size:48px;
+margin-bottom:20px;
+}
+
+.download{
+
+text-align:center;
+background:linear-gradient(180deg,#0f3116,#07170b);
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.download p{
+
+max-width:700px;
+margin:auto;
+margin-bottom:40px;
+}
+
+footer{
+
+padding:40px;
+text-align:center;
+opacity:.6;
+font-size:14px;
+}
+
+@media(max-width:900px){
+
+.hero{
+
+grid-template-columns:1fr;
+text-align:center;
+}
+
+h1{
+
+font-size:46px;
+}
+
+.phone{
+
+margin-top:40px;
+}
+
+.buttons{
+
+justify-content:center;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<header>
+
+<div class="logo">🍀 Sorte <span>do Dia</span></div>
+
+<nav>
+
+<a href="#recursos">Recursos</a>
+<a href="#sobre">Sobre</a>
+<a href="#download">Baixar</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<div class="tag">
+✨ Inteligência Artificial + Astrologia
+</div>
+
+<h1>
+Descubra o que o universo reserva para <span>você hoje.</span>
+</h1>
+
+<p>
+
+Receba diariamente mensagens inspiradoras criadas por Inteligência Artificial para seu signo. Amor, dinheiro, trabalho, saúde, sorte, energia e muito mais.
+
+</p>
+
+<div class="buttons">
+
+<a href="#" class="btn primary">
+Baixar no Google Play
+</a>
+
+<a href="#recursos" class="btn secondary">
+Saiba Mais
+</a>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="phone">
+
+<div class="screen">
+
+<div class="signo">
+♎ Libra
+</div>
+
+<div class="card">
+
+<strong>Energia do Dia</strong>
+
+<br><br>
+
+Hoje é um excelente momento para confiar mais em sua intuição. Pequenas oportunidades poderão gerar grandes conquistas.
+
+</div>
+
+<div class="grid">
+
+<div class="item">
+❤️<br>Amor<br><b>94%</b>
+</div>
+
+<div class="item">
+💰<br>Dinheiro<br><b>88%</b>
+</div>
+
+<div class="item">
+💼<br>Trabalho<br><b>91%</b>
+</div>
+
+<div class="item">
+🍀<br>Sorte<br><b>96%</b>
+</div>
+
+<div class="item">
+💚<br>Saúde<br><b>90%</b>
+</div>
+
+<div class="item">
+⚡<br>Energia<br><b>93%</b>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="recursos">
+
+<h2>Recursos</h2>
+
+<div class="features">
+
+<div class="feature">
+<div class="icon">🤖</div>
+<h3>IA Avançada</h3>
+<p>Mensagens únicas geradas diariamente.</p>
+</div>
+
+<div class="feature">
+<div class="icon">♈</div>
+<h3>12 Signos</h3>
+<p>Conteúdo personalizado para cada signo.</p>
+</div>
+
+<div class="feature">
+<div class="icon">📅</div>
+<h3>Todos os Dias</h3>
+<p>Uma nova previsão a cada manhã.</p>
+</div>
+
+<div class="feature">
+<div class="icon">🌎</div>
+<h3>3 Idiomas</h3>
+<p>Português, English e Español.</p>
+</div>
+
+<div class="feature">
+<div class="icon">🍀</div>
+<h3>Sorte do Dia</h3>
+<p>Números, cores, emoji, frase e muito mais.</p>
+</div>
+
+<div class="feature">
+<div class="icon">🔒</div>
+<h3>Privacidade</h3>
+<p>Sem cadastro obrigatório.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="download" id="download">
+
+<h2>Comece hoje mesmo</h2>
+
+<p>
+
+Transforme sua rotina com mensagens positivas, previsões diárias e inspiração criada por Inteligência Artificial.
+
+</p>
+
+<a class="btn primary" href="#">
+
+📲 Baixar Gratuitamente
+
+</a>
+
+</section>
+
+<footer>
+
+© 2026 Sorte do Dia com IA • Todos os direitos reservados.
+
+</footer>
+
+</body>
+</html>
