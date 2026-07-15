@@ -270,6 +270,13 @@ if (!empty($idioma) && in_array($idioma, $lingua)) {
   if (!file_exists($cacheFile)) {
    $fatoHistorico = buscarFatoHistorico($data, $infoIdioma['wiki']);
    $pacote = gerarConteudoComGemini($sig, $data, $fatoHistorico, $idioma);
+   
+   // Testa 2x para garantir
+   if (!$pacote) {
+    sleep(15);
+    $pacote = gerarConteudoComGemini($sig, $data, $fatoHistorico, $idioma);
+   }
+
    if (!$pacote) $pacote = pacoteFallback();
 
    $resultado = array_merge(array('signo' => $sig, 'data' => $data, 'idioma' => $idioma, 'fato_historico' => $fatoHistorico), $pacote);
