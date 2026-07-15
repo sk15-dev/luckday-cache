@@ -1,6 +1,5 @@
 <?php
-//  Windows: D:/xampp/php/php.exe -f D:/xampp/htdocs/app-farm/sorte-dia/API/gera_api.php
-set_time_limit(360);
+// Windows: D:/xampp/php/php.exe -f D:/xampp/htdocs/app-farm/sorte-dia/API/gera_api.php
 setlocale(LC_ALL, 'pt_BR.utf-8', 'pt_BR', 'pt_BR.utf-8', 'portuguese');
 
 // CONFIG
@@ -263,9 +262,12 @@ function pacoteFallback() {
 
 // Roda de fato
 if (!empty($idioma) && in_array($idioma, $lingua)) {
- foreach ($signos as $p => $sig) {
-  echo ($p + 1) . ") Gerando {$sig}...\n";
+ echo "Data: {$data}\n";
 
+ foreach ($signos as $p => $sig) {
+  echo ($p + 1) . ") Gerando {$sig}: ";
+ 
+  $status = "OK";
   $cacheFile = "{$cacheDir}/{$sig}-{$idioma}.json";
   if (!file_exists($cacheFile)) {
    $fatoHistorico = buscarFatoHistorico($data, $infoIdioma['wiki']);
@@ -277,20 +279,22 @@ if (!empty($idioma) && in_array($idioma, $lingua)) {
     $pacote = gerarConteudoComGemini($sig, $data, $fatoHistorico, $idioma);
    }
 
-   if (!$pacote) $pacote = pacoteFallback();
+   if (!$pacote) {
+    $pacote = pacoteFallback();
+    $status = "Erro";
+   }
 
    $resultado = array_merge(array('signo' => $sig, 'data' => $data, 'idioma' => $idioma, 'fato_historico' => $fatoHistorico), $pacote);
    file_put_contents($cacheFile, json_encode($resultado, JSON_UNESCAPED_UNICODE));
-   echo "OK => {$sig}\n";
+   echo "{$status} => {$sig}\n";
   } else {
    echo "Ok Cache\n";
   }
 
-  echo "------\n";
-  sleep(10);
+  if ($p != 11) sleep(10);
  }
 
- echo "Finalizado";
+ echo "- Finalizado";
 } else {
  echo "Sem língua...";
 }
