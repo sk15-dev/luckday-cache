@@ -8,6 +8,10 @@ on:
   # permite rodar manualmente pelo botão Actions
   workflow_dispatch:
 
+concurrency:
+  group: cache-luckday
+  cancel-in-progress: false
+
 permissions:
  contents: write
 
