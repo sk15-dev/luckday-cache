@@ -63,8 +63,12 @@ jobs:
 
       - name: Salvar arquivos
         run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add cache/
           git commit -m "Atualiza caches" || exit 0
+          
+          # Puxa as alterações remotas e joga seus novos JSONs no topo
+          git pull --rebase origin main
+          
           git push
