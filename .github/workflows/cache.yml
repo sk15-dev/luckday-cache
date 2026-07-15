@@ -2,8 +2,8 @@ name: Gerar caches LuckDay
 
 on:
   schedule:
-    # 00h01 UTC Brasil
-    - cron: '1 13 * * *'
+    # 00h13 UTC Brasil
+    - cron: '13 3 * * *'
 
   # permite rodar manualmente pelo botão Actions
   workflow_dispatch:
