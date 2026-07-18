@@ -117,20 +117,21 @@ function gerarConteudoComGemini($signo, $data, $fatoHistorico, $idioma) {
         
    if ($fatoHistorico) $prompt .= "Subtly and poetically incorporate the following historical fact from a day like today, without citing the source and without mentioning the year if it doesn't sound natural: \"{$fatoHistorico}\".\n";
 
-   $prompt .= "Return ONLY a valid JSON, with NO Markdown and no extra text outside the JSON. \n" .
-   "CRITICAL: The JSON KEYS must remain in Portuguese exactly as shown below, but all VALUES must be written in US English (using US pop-astrology culture, daily horoscope vibes, and four-leaf clovers imagery):\n" .
-   "{\n" .
-   '  "titulo": "Short and warm title (max 6 words)",' . "\n" .
-   '  "energia_do_dia": "Message between 40 and 70 words about the energy of the day for this sign",' . "\n" .
-   '  "palavra_do_dia": "A single inspiring word (e.g., Harmony, Courage, Serenity, Balance)",' . "\n" .
-   '  "frase_do_dia": "Inspiring quote with up to 15 words",' . "\n" .
-   '  "simbolo_emoji": "A single emoji representing the symbol of the day (e.g., 🌻, 🦋, 🔥, 🌙)",' . "\n" .
-   '  "simbolo_nome": "Short name of the symbol (e.g., Sunflower)",' . "\n" .
-   '  "cor_nome": "Name of an inspiring color for today (e.g., Golden)",' . "\n" .
-   '  "numero_simbolico": Integer from 1 to 99,' . "\n" .
-   '  "significado_numero": "Brief explanation (up to 12 words) of the symbolism of this number",' . "\n" .
-   '  "conselho": "Short, practical advice for today, with a maximum of 15 words"' . "\n" .
-   "}\n";
+   $prompt .= "Return ONLY a valid JSON, with NO Markdown and no extra text outside the JSON.\n" .
+   "CRITICAL: The JSON KEYS must remain in Portuguese exactly as shown below, but all VALUES must be written in US English (using US pop-astrology culture, daily horoscope vibes, and four-leaf clovers imagery).";
+
+   // Controle
+   $titleDesc = 'short and warm title (max 6 words)';
+   $msgDesc = 'message between 40 and 70 words about the energy of the day for this sign';
+   $wordDesc = 'a single inspiring word (e.g., Harmony, Courage, Serenity, Balance)';
+   $phraseDesc = 'inspiring quote with up to 15 words';
+   $emojiDesc = 'a single emoji representing the symbol of the day (e.g., 🌻, 🦋, 🔥, 🌙)';
+   $namEmojiDesc = 'short name of the symbol (e.g., Sunflower)';
+   $colorDesc = 'name of an inspiring color for today (e.g., Golden)';
+   $cHexDesc = 'hexadecimal code of the color selected in "cor_nome"';
+   $numebrDesc = 'integer from 1 to 99';
+   $nbrSigDesc = 'brief explanation (up to 12 words) of the symbolism of this number';
+   $iaText = 'short, practical advice for today, with a maximum of 15 words';
   break;
 
   case 'es-ES':
@@ -141,20 +142,21 @@ function gerarConteudoComGemini($signo, $data, $fatoHistorico, $idioma) {
 
    if ($fatoHistorico) $prompt .= "Incorpora de forma sutil y poética el siguiente hecho histórico de un día como hoy, sin citar la fuente y sin mencionar el año si no suena natural: \"{$fatoHistorico}\".\n";
 
-   $prompt .= "Responde ÚNICAMENTE con un JSON válido, sin Markdown y sin texto extra fuera del JSON. \n" .
-   "CRÍTICO: Las CLAVES del JSON deben permanecer en portugués exactamente como se muestra abajo, pero todos los VALORES deben escribirse en Español de España (usando un tono cercano a la cultura hispana de la buena suerte, amuletos y tarot popular):\n" .
-   "{\n" .
-   '  "titulo": "Título corto y acogedor (máximo 6 palabras)",' . "\n" .
-   '  "energia_do_dia": "Mensaje de entre 40 y 70 palabras sobre la energía del día para este signo",' . "\n" .
-   '  "palavra_do_dia": "Una sola palabra inspiradora (ej: Armonía, Coraje, Serenidad, Equilibrio)",' . "\n" .
-   '  "frase_do_dia": "Frase inspiradora de hasta 15 palabras",' . "\n" .
-   '  "simbolo_emoji": "Un solo emoji que represente el símbolo del día (ej: 🌻, 🦋, 🔥, 🌙)",' . "\n" .
-   '  "simbolo_nome": "Nombre corto del símbolo (ej: Girasol)",' . "\n" .
-   '  "cor_nome": "Nombre de un color inspirador para hoy (ej: Dorado)",' . "\n" .
-   '  "numero_simbolico": Número entero de 1 a 99,' . "\n" .
-   '  "significado_numero": "Breve explicación (hasta 12 palabras) del simbolismo de este número",' . "\n" .
-   '  "conselho": "Consejo corto y práctico para hoy, con un máximo de 15 palabras"' . "\n" .
-   "}\n";
+   $prompt .= "Responde ÚNICAMENTE con un JSON válido, sin Markdown y sin texto extra fuera del JSON.\n" .
+   "CRÍTICO: Las CLAVES del JSON deben permanecer en portugués exactamente como se muestra abajo, pero todos los VALORES deben escribirse en Español de España (usando un tono cercano a la cultura hispana de la buena suerte, amuletos y tarot popular)";
+
+   // Controle
+   $titleDesc = 'título corto y acogedor (máximo 6 palabras)';
+   $msgDesc = 'mensaje de entre 40 y 70 palabras sobre la energía del día para este signo';
+   $wordDesc = 'una sola palabra inspiradora (ej: Armonía, Coraje, Serenidad, Equilibrio)';
+   $phraseDesc = 'frase inspiradora de hasta 15 palabras';
+   $emojiDesc = 'un solo emoji que represente el símbolo del día (ej: 🌻, 🦋, 🔥, 🌙)';
+   $namEmojiDesc = 'nombre corto del símbolo (ej: Girasol)';
+   $colorDesc = 'nombre de un color inspirador para hoy (ej: Dorado)';
+   $cHexDesc = 'código hexadecimal del color elegido en "cor_nome"';
+   $numebrDesc = 'número entero de 1 a 9';
+   $nbrSigDesc = 'breve explicación (hasta 12 palabras) del simbolismo de este número';
+   $iaText = 'consejo corto y práctico para hoy, con un máximo de 15 palabras';
   break;
 
   case 'pt-BR': default:
@@ -165,20 +167,21 @@ function gerarConteudoComGemini($signo, $data, $fatoHistorico, $idioma) {
         
    if ($fatoHistorico) $prompt .= "Incorpore de forma sutil e poética o seguinte fato histórico de um dia como hoje, sem citar a fonte e sem mencionar o ano se isso não soar natural: \"{$fatoHistorico}\".\n";
 
-   $prompt .= "Responda APENAS com um JSON válido, sem Markdown e sem texto extra fora do JSON. \n" .
-   "Todas as chaves e valores devem ser escritos em Português do Brasil (com tom próximo à cultura brasileira, misticismo leve e simpatias):\n" .
-   "{\n" .
-   '  "titulo": "título curto e acolhedor para o card do dia (máximo 6 palavras)",' . "\n" .
-   '  "energia_do_dia": "mensagem entre 40 e 70 palavras sobre a energia do dia para este signo",' . "\n" .
-   '  "palavra_do_dia": "uma única palavra inspiradora (ex: Harmonia, Coragem, Serenidade, Equilíbrio)",' . "\n" .
-   '  "frase_do_dia": "frase inspiradora com até 15 palavras",' . "\n" .
-   '  "simbolo_emoji": "um único emoji que represente o símbolo do dia (ex: 🌻, 🦋, 🔥, 🌙)",' . "\n" .
-   '  "simbolo_nome": "nome curto do símbolo (ex: Girassol)",' . "\n" .
-   '  "cor_nome": "nome de uma cor inspiradora para hoje (ex: Dourado)",' . "\n" .
-   '  "numero_simbolico": número inteiro de 1 a 99,' . "\n" .
-   '  "significado_numero": "breve explicação (até 12 palavras) do simbolismo desse número",' . "\n" .
-   '  "conselho": "conselho curto e prático para hoje, com no máximo 15 palavras"' . "\n" .
-   "}\n";
+   $prompt .= "Responda APENAS com um JSON válido, sem Markdown e sem texto extra fora do JSON.\n" .
+   "Todas as chaves e valores devem ser escritos em Português do Brasil (com tom próximo à cultura brasileira, misticismo leve e simpatias)";
+
+   // Controle
+   $titleDesc = 'título curto e acolhedor para o card do dia (máximo 6 palavras)';
+   $msgDesc = 'mensagem entre 40 e 70 palavras sobre a energia do dia para este signo';
+   $wordDesc = 'uma única palavra inspiradora (ex: Harmonia, Coragem, Serenidade, Equilíbrio)';
+   $phraseDesc = 'frase inspiradora com até 15 palavras';
+   $emojiDesc = 'um único emoji que represente o símbolo do dia (ex: 🌻, 🦋, 🔥, 🌙)';
+   $namEmojiDesc = 'nome curto do símbolo (ex: Girassol)';
+   $colorDesc = 'nome de uma cor inspiradora para hoje (ex: Dourado)';
+   $cHexDesc = 'código hexadecimal da cor escolhida em "cor_nome"';
+   $numebrDesc = 'número inteiro de 1 a 99';
+   $nbrSigDesc = 'breve explicação (até 12 palavras) do simbolismo desse número';
+   $iaText = 'conselho curto e prático para hoje, com no máximo 15 palavras';
   break;
  }
 
@@ -188,9 +191,60 @@ function gerarConteudoComGemini($signo, $data, $fatoHistorico, $idioma) {
   'contents' => array(array('parts' => array(array('text' => $promptFinal)))),
   'generationConfig' => array(
    'temperature' => 0.95,
-   'maxOutputTokens' => 300, //1000,
+   'maxOutputTokens' => 300,
    'responseMimeType' => 'application/json',
-   'thinkingConfig' => array('thinkingBudget' => 0) // Desativa o pensamento v1beta para economizar cota de tokens e responder instantaneamente
+   'responseSchema' => array(
+    'type' => 'OBJECT',
+    'required' => array('titulo', 'energia_do_dia', 'palavra_do_dia', 'frase_do_dia', 'simbolo_emoji', 'simbolo_nome', 'cor_nome', 'cor_hexadecimal', 'numero_simbolico', 'significado_numero', 'conselho'),
+    'properties' => array(
+     'titulo' => array(
+      'type' => 'STRING',
+      'description' => $titleDesc
+     ),
+     'energia_do_dia' => array(
+      'type' => 'STRING',
+      'description' => $msgDesc
+     ),
+     'palavra_do_dia' => array(
+      'type' => 'STRING',
+      'description' => $wordDesc
+     ),
+     'frase_do_dia' => array(
+      'type' => 'STRING',
+      'description' => $phraseDesc
+     ),
+     'simbolo_emoji' => array(
+      'type' => 'STRING',
+      'description' => $emojiDesc
+     ),
+     'simbolo_nome' => array(
+      'type' => 'STRING',
+      'description' => $namEmojiDesc
+     ),
+     'cor_nome' => array(
+      'type' => 'STRING',
+      'description' => $colorDesc
+     ),
+     'cor_hexadecimal' => array(
+      'type' => 'STRING',
+      'description' => $cHexDesc,
+      'pattern' => '^#[0-9A-Fa-f]{6}$'
+     ),
+     'numero_simbolico' => array(
+      'type' => 'INTEGER',
+      'description' => $numebrDesc
+     ),
+     'significado_numero' => array(
+      'type' => 'STRING',
+      'description' => $nbrSigDesc
+     ),
+     'conselho' => array(
+      'type' => 'STRING',
+      'description' => $iaText
+     )
+    )
+   ),
+   'thinkingConfig' => array('thinkingBudget' => 0)
   )
  );
 
@@ -231,6 +285,7 @@ function gerarConteudoComGemini($signo, $data, $fatoHistorico, $idioma) {
   'simbolo_emoji' => (isset($pacote['simbolo_emoji']) ? $pacote['simbolo_emoji'] : '✨'),
   'simbolo_nome' => (isset($pacote['simbolo_nome']) ? $pacote['simbolo_nome'] : ''),
   'cor_nome' => (isset($pacote['cor_nome']) ? $pacote['cor_nome'] : ''),
+  'cor_hexadecimal' => (isset($pacote['cor_hexadecimal']) ? $pacote['cor_hexadecimal'] : '#D90000'),
   'numero_simbolico' => (isset($pacote['numero_simbolico']) ? intval($pacote['numero_simbolico']) : (1 + rand(0, 98))),
   'significado_numero' => (isset($pacote['significado_numero']) ? $pacote['significado_numero'] : ''),
   'conselho' => (isset($pacote['conselho']) ? $pacote['conselho'] : ''),
@@ -251,6 +306,7 @@ function pacoteFallback() {
   'simbolo_emoji' => '🌿',
   'simbolo_nome' => 'Green Leaf',
   'cor_nome' => 'Emerald Green',
+  'cor_hexadecimal' => '#50C878',
   'numero_simbolico' => 7,
   'significado_numero' => 'A symbol of reflection and inner wisdom.',
   'conselho' => 'Take a moment to pause before making important decisions.',
