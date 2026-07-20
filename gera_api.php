@@ -90,17 +90,17 @@ function sortearMegaSena() {
 function gerarIndicadoresDia() {
  return array(
   'amor' => rand(10, 100),
-  'saudade' => rand(10, 100),
+  'amizade' => rand(10, 100),
+  'familia' => rand(10, 100),
   'trabalho' => rand(10, 100),
-  'financas' => rand(10, 100),
   'dinheiro' => rand(10, 100),
   'sorte' => rand(10, 100),
   'humor' => rand(10, 100),
   'energia' => rand(10, 100),
   'saude' => rand(10, 100),
-  'amizade' => rand(10, 100),
   'estudos' => rand(10, 100),
   'criatividade' => rand(10, 100),
+  'intuicao' => rand(10, 100)
  );
 }
 
